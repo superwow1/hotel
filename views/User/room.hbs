@@ -1,0 +1,122 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/room.css" />
+    <title>Quản lý phòng</title>
+</head>
+
+<body>
+
+    <div class="layout">
+        <div class="room-container">
+            <div class="room-search">
+                <p>QUẢN LÝ PHÒNG</p>
+                <div class="room-search-btn">
+                    <div class="room-search-create">Thêm phòng</div>
+                </div>
+            </div>
+            <div class="room-table">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>TÊN</th>
+                        <th>Trạng thái</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th>Số lượng người</th>
+                        <th>Loại phòng</th>
+                        <th>Hotel ID</th>
+                    </tr>
+                    {{#each datatable}}
+                    <tr>
+                        <td>{{this.id}}</td>
+                        <td>{{this.name}}</td>
+                        <td>{{this.status}}</td>
+                        <td>{{this.price}}</td>
+                        <td>{{this.quantity}}</td>
+                        <td>{{this.quantity_people}}</td>
+                        <td>{{this.tyep_bed}}</td>
+                        <td>{{this.hotelid}}</td>
+
+                        <td>
+                            <button type="button" class="updateRoom" value={{this.id}}>Chỉnh sửa</button>
+                            <button type="button" class="deleteRoom" value={{this.id}}>Xóa</button>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="popup-overlay">
+        {{! <div class="popup"> }}
+            {{! <span class="close-btn">&times;</span> }}
+            {{! <h2>Chỉnh sửa</h2> }}
+            {{! <form id="updateForm"> }}
+                {{! <input type="text" id="name" name="name" placeholder="Tên khách sạn" value="${data.name}" required>
+                }}
+                {{! <input type="text" id="status" name="status" placeholder="Trạng thái" value="${data.status}"
+                    required> }}
+                {{! <input type="text" id="price" name="price" placeholder="Giá" value="${data.price}" required> }}
+                {{! <input type="text" id="quantity" name="quantity" placeholder="Số lượngn" value="${data.quantity}"
+                    required> }}
+                {{! <input type="text" id="quantity_people" name="quantity_peopole" placeholder="Số lượng người"
+                    value="${data.quantity_people}" required> }}
+                {{! <input type="text" id="type_bed" name="type_bed" placeholder="Loại giường" value="${data.type_bed}"
+                    required> }}
+                {{! <input type="text" id="hotelid" name="hotelid" placeholder="ID của khách sạn"
+                    value="${data.hotelid}" required> }}
+
+
+                {{! <div class="ebutton"> }}
+                    {{! <input type="submit" value="Cập nhật"> }}
+                    {{! </div> }}
+                {{! </form> }}
+            {{! </div> }}
+    </div>
+    <div class="custom-popup-overlay">
+        <div class="custom-popup">
+            <span class="custom-close-btn">&times;</span>
+            <h2>Thêm phòng</h2>
+            <form id="signupForm">
+                <input type="text" id="name" name="name" placeholder="Tên phòng *" required
+                    oninvalid="this.setCustomValidity('Vui lòng nhập tên phòng')"
+                    oninput="this.setCustomValidity('')" />
+                <input type="text" id="status" name="status" placeholder="Trạng thái *" required
+                    oninvalid="this.setCustomValidity('Vui lòng nhập trạng thái')"
+                    oninput="this.setCustomValidity('')" />
+                <input type="text" id="price" name="price" placeholder="Giá *" required
+                    oninvalid="this.setCustomValidity('Vui lòng nhập giá')" oninput="this.setCustomValidity('')" />
+                <input type="text" id="quantity" name="quantity" placeholder="Số lượng phòng *" required
+                    oninvalid="this.setCustomValidity('Vui lòng nhập số lượng phòng')"
+                    oninput="this.setCustomValidity('')" />
+                <input type="text" id="quantity_people" name="quantity_people" placeholder="Số lượng người *" required
+                    oninvalid="this.setCustomValidity('Vui lòng nhập số lượng người')"
+                    oninput="this.setCustomValidity('')" />
+                <input type="text" id="type_bed" name="type_bed" placeholder="Loại giường *" required
+                    oninvalid="this.setCustomValidity('Vui lòng nhập loại giường')"
+                    oninput="this.setCustomValidity('')" />
+                <input type="text" id="hotelid" name="hotelid" placeholder="Hotel ID *" required
+                    oninvalid="this.setCustomValidity('Vui lòng nhập id của khách sạn')"
+                    oninput="this.setCustomValidity('')" />
+                <input type="submit" class="dkbutton" value="Thêm mới" />
+            </form>
+        </div>
+    </div>
+
+    <div class="popup-overlay-delete">
+        <div class="popup-delete">
+            <h2>Thông báo</h2>
+            <p>Đã xóa khách sạn thành công</p>
+            <button class="close-btn1">Đóng</button>
+        </div>
+    </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="/js/room.js"></script>
+
+</html>
